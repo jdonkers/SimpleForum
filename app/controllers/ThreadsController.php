@@ -42,8 +42,7 @@ class ThreadsController extends ControllerBase
             
         if ($count > 0) {
             $slug = $slug . "-" . $count;
-        }        
-
+        }
 
         $thread = new Threads();
         $thread->created_by = $this->auth->user->id;
@@ -53,18 +52,7 @@ class ThreadsController extends ControllerBase
         $thread->replies = 0;        
         $thread->created = date('Y-m-d H:i:s');
         $thread->updated = date('Y-m-d H:i:s');        
-
-
-        if (!$thread->create()) {
-            foreach ($thread->getMessages() as $message) {               
-
-                echo $message;
-            }
-
-            $this->view->disable();
-            return;
-        }
-
+        $thread->create();
 
         $post = new Posts();
         $post->created_by = $this->auth->user->id;

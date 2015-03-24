@@ -6,6 +6,7 @@
             Logged in as {{auth.user.display}} | {{ link_to("login/logout", 'Logout') }}
         {% else %}
             {{ link_to("login", '<button type="button" class="btn btn-primary pull-right">Login</button>') }}
+            {{ link_to("register", '<button type="button" style="margin-right:5px;" class="btn btn-primary pull-right">Register</button>') }}
         {% endif %}
     </span>
 </div>

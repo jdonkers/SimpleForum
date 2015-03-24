@@ -39,7 +39,7 @@ class PostsController  extends ControllerBase
         $post->content = $this->request->getPost("content");
         $post->created_by = $this->auth->user->id;
         $post->thread_id = $thread->id;
-        $post->created = new RawValue('default');        
+        $post->created = date('Y-m-d G:i:s');        
         $post->save();        
 
         $board->post_count++;
@@ -49,7 +49,7 @@ class PostsController  extends ControllerBase
         $this->auth->user->update();
 
         $thread->replies++;
-        $thread->updated = new RawValue('default');
+        $thread->updated = date('Y-m-d G:i:s');
         $thread->update();
 
         $redirect = "threads/view/" . $thread->slug . "?page=last";
